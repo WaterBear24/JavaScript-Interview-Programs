@@ -31,6 +31,7 @@ test('weave can combine two queues', () => {
   two.add('two');
   two.add('three');
   two.add('four');
+  two.add('five');
 
   const result = weave(one, two);
   expect(result.remove()).toEqual(1);
@@ -41,5 +42,6 @@ test('weave can combine two queues', () => {
   expect(result.remove()).toEqual('three');
   expect(result.remove()).toEqual(4);
   expect(result.remove()).toEqual('four');
+  expect(result.remove()).toEqual('five');
   expect(result.remove()).toBeUndefined();
 });

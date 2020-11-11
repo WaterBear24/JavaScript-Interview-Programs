@@ -24,6 +24,35 @@
 
 const Queue = require('./queue');
 
-function weave(sourceOne, sourceTwo) {}
+// Solution #1 (my first solution) (cheated)
+// function weave(sourceOne, sourceTwo) {
+//   let weaveQueue = new Queue();
+//   let counter = 0;
+//   let s1Data = sourceOne.data;
+//   let s2Data = sourceTwo.data;
+//   while (counter < Math.max(s1Data.length, s2Data.length)) {
+//     s1Popped = s1Data[s1Data.length - counter - 1];
+//     s2Popped = s2Data[s2Data.length - counter - 1];
+//     if (s1Popped)
+//       weaveQueue.add(s1Popped);
+//     if (s2Popped)
+//       weaveQueue.add(s2Popped);
+//     counter++;
+//   }
+
+//   return weaveQueue;
+// }
+
+// Solution #2 (my first solution not cheating) (hehahahah)
+function weave(sourceOne, sourceTwo) {
+  let weaveQueue = new Queue();
+  while (sourceOne.peek() || sourceTwo.peek()) {
+    if (sourceOne.peek())
+      weaveQueue.add(sourceOne.remove());
+    if (sourceTwo.peek())
+      weaveQueue.add(sourceTwo.remove());
+  }
+  return weaveQueue;
+}
 
 module.exports = weave;

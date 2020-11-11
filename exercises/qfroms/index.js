@@ -14,6 +14,31 @@
 
 const Stack = require('./stack');
 
-class Queue {}
+// Solution #1 (my first solution)
+class Queue {
+  constructor() {
+    this.s1 = new Stack();
+    this.s2 = new Stack();
+  }
+
+  // You can do the same thing in remove, just the opposite
+  add(val) {
+    while (this.s2.peek()) {
+      this.s1.push(this.s2.pop());
+    }
+    this.s1.push(val);
+    while (this.s1.peek()) {
+      this.s2.push(this.s1.pop());
+    }
+  }
+
+  remove() {
+    return this.s2.pop();
+  }
+
+  peek() {
+    return this.s2.peek();
+  }
+}
 
 module.exports = Queue;

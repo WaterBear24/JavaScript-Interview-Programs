@@ -12,6 +12,29 @@
 //   l.insertLast('c')
 //   midpoint(l); // returns { data: 'b' }
 
-function midpoint(list) {}
+// My first solution, I kind of cheated
+// function midpoint(list) {
+//   let node = list.getFirst();
+//   let values = [];
+//   while (node) {
+//     values.push(node.data);
+//     node = node.next;
+//   }
+//   console.log(values, 'length', values.length, 'midpoint', parseInt(values.length / 2));
+//   return { data: values[Math.ceil(values.length / 2) - 1] };
+// }
+
+// Better solution
+function midpoint(list) {
+  let slow = list.getFirst();
+  let fast = list.getFirst();
+
+  while (fast.next && fast.next.next) {
+    slow = slow.next;
+    fast = fast.next.next;
+  }
+
+  return slow;
+}
 
 module.exports = midpoint;

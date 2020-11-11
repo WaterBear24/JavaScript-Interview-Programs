@@ -12,6 +12,34 @@
 //   c.next = b;
 //   circular(l) // true
 
-function circular(list) {}
+// My first solution
+// function circular(list) {
+//   let node = list.getFirst();
+//   while (node) {
+//     let node2 = list.getFirst();
+//     while (node2 !== node) {
+//       if (node.next === node2) {
+//         return true;
+//       }
+//       node2 = node2.next;
+//     }
+//     node = node.next;
+//   }
+//   return false;
+// }
+
+// Slow/Fast solution (better)
+function circular(list) {
+  let slow = list.getFirst();
+  let fast = list.getFirst();
+  while (fast.next && fast.next.next) {
+    slow = slow.next;
+    fast = fast.next.next;
+    if (slow === fast) {
+      return true;
+    }
+  }
+  return false;
+}
 
 module.exports = circular;

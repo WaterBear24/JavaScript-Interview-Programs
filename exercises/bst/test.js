@@ -9,6 +9,7 @@ test('Node can insert correctly', () => {
   node.insert(5);
   node.insert(15);
   node.insert(17);
+  console.log(node);
 
   expect(node.left.data).toEqual(5);
   expect(node.right.data).toEqual(15);
